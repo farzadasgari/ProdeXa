@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
+import {ReactNode} from "react";
 
 interface MainLayoutProps {
     children: ReactNode;
     title?: string;
 }
 
-const MainLayout = ({ children, title = "ProdeXa" }: MainLayoutProps) => {
+const MainLayout = ({children, title = "ProdeXa"}: MainLayoutProps) => {
     return (
         <div className="min-h-screen bg-background">
             <header className="bg-sidebar p-4 border-b">

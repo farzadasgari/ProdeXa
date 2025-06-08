@@ -4,7 +4,7 @@ import Master from "./Master"
 const Index = () => {
     return (
         <MainLayout>
-            <Master />
+            <Master/>
         </MainLayout>
     );
 };
