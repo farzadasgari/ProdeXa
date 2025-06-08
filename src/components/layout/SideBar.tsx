@@ -5,6 +5,8 @@ import {
     LayoutDashboard,
     ChevronLeft,
     ChevronRight,
+    User,
+    Settings
 } from "lucide-react";
 
 interface NavItemProps {
@@ -70,6 +72,12 @@ const Sidebar = ({onCollapseChange}: SidebarProps) => {
                 <nav className="flex-1 px-2 py-4 space-y-1">
                     <NavItem icon={LayoutDashboard} label="Dashboard" to="/" collapsed={collapsed}/>
                 </nav>
+
+
+                <div className="p-2 border-t border-sidebar-border space-y-1">
+                    <NavItem icon={User} label="Profile" to="/profile" collapsed={collapsed}/>
+                    <NavItem icon={Settings} label="Settings" to="/settings" collapsed={collapsed}/>
+                </div>
             </div>
         </aside>
     );
