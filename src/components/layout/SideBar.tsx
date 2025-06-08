@@ -1,22 +1,76 @@
-import {Link} from "react-router-dom";
-import {LayoutDashboard, CheckSquare} from "lucide-react";
+import {useState} from "react";
+import {Link, useLocation} from "react-router-dom";
+import {cn} from "@/lib/utils";
+import {
+    LayoutDashboard,
+    ChevronLeft,
+    ChevronRight,
+} from "lucide-react";
 
-const Sidebar = () => {
+interface NavItemProps {
+    icon: React.ElementType;
+    label: string;
+    to: string;
+    collapsed: boolean;
+}
+
+const NavItem = ({icon: Icon, label, to, collapsed}: NavItemProps) => {
+    const location = useLocation();
+    const isActive = location.pathname === to ||
+        (to === "/settings" && location.pathname.startsWith("/settings"));
+
     return (
-        <aside className="bg-sidebar h-screen fixed left-0 top-0 w-[240px] border-r border-sidebar-border">
-            <div className="p-4 border-b border-sidebar-border">
-                <span className="text-xl font-bold">ProdeXa</span>
+        <Link
+            to={to}
+            className={cn(
+                "sidebar-link",
+                isActive ? "sidebar-link-active" : "sidebar-link-inactive"
+            )}
+            title={collapsed ? label : undefined}
+        >
+            <Icon size={18}/>
+            {!collapsed && <span>{label}</span>}
+        </Link>
+    );
+};
+
+interface SidebarProps {
+    onCollapseChange?: (collapsed: boolean) => void;
+}
+
+const Sidebar = ({onCollapseChange}: SidebarProps) => {
+    const [collapsed, setCollapsed] = useState(false);
+
+    const toggleSidebar = () => {
+        const newCollapsed = !collapsed;
+        setCollapsed(newCollapsed);
+        onCollapseChange?.(newCollapsed);
+    };
+
+    return (
+        <aside
+            className={cn(
+                "bg-sidebar h-screen fixed left-0 top-0 z-40 transition-all duration-300 border-r border-sidebar-border",
+                collapsed ? "w-[60px]" : "w-[240px]"
+            )}
+        >
+            <div className="flex flex-col h-full">
+                <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
+                    {!collapsed && (
+                        <span className="text-xl font-bold">ProdeXa</span>
+                    )}
+                    <button
+                        onClick={toggleSidebar}
+                        className="p-1 rounded-md hover:bg-sidebar-accent text-sidebar-foreground"
+                    >
+                        {collapsed ? <ChevronRight size={20}/> : <ChevronLeft size={20}/>}
+                    </button>
+                </div>
+
+                <nav className="flex-1 px-2 py-4 space-y-1">
+                    <NavItem icon={LayoutDashboard} label="Dashboard" to="/" collapsed={collapsed}/>
+                </nav>
             </div>
-            <nav className="p-2 space-y-1">
-                <Link to="/" className="sidebar-link sidebar-link-inactive">
-                    <LayoutDashboard size={18}/>
-                    <span>Dashboard</span>
-                </Link>
-                <Link to="/tasks" className="sidebar-link sidebar-link-inactive">
-                    <CheckSquare size={18}/>
-                    <span>Tasks</span>
-                </Link>
-            </nav>
         </aside>
     );
 };
