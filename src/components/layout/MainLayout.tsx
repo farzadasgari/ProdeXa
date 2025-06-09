@@ -2,6 +2,7 @@ import {ReactNode, useState, useEffect} from "react";
 import {useLocation} from "react-router-dom";
 import {cn} from "@/lib/utils";
 import SideBar from "./SideBar";
+import NavBar from "./NavBar.tsx";
 
 interface MainLayoutProps {
     children: ReactNode;
@@ -45,6 +46,7 @@ const MainLayout = ({children}: MainLayoutProps) => {
                 "transition-all duration-300 ease-in-out",
                 collapsed ? "ml-[60px]" : "ml-[240px]"
             )}>
+                <NavBar/>
                 <main className="min-h-[calc(100vh-64px)]">
                     {children}
                 </main>
