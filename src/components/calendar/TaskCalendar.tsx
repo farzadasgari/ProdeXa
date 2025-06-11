@@ -1,6 +1,6 @@
 import {useMemo, useState} from "react";
 import {format, startOfWeek, endOfWeek, eachDayOfInterval, startOfDay, endOfDay, addDays} from "date-fns";
-import {Calendar} from "@/components/ui/calendar";
+import {Calendar} from "@/components/ui/calendar.tsx";
 import {
     Card,
     CardContent,
@@ -8,12 +8,12 @@ import {
     CardHeader,
     CardTitle,
     CardFooter,
-} from "@/components/ui/card";
-import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs";
-import {Badge} from "@/components/ui/badge";
-import {Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar";
-import {Button} from "@/components/ui/button";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+} from "@/components/ui/card.tsx";
+import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs.tsx";
+import {Badge} from "@/components/ui/badge.tsx";
+import {Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar.tsx";
+import {Button} from "@/components/ui/button.tsx";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
 import {CheckCircle, Clock, Plus} from "lucide-react";
 
 interface CalendarTask {

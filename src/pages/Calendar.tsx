@@ -1,5 +1,5 @@
 import PageLayout from "@/components/layout/PageLayout";
-import TaskCalendar from "@/components/tasks/TaskCalendar";
+import TaskCalendar from "@/components/calendar/TaskCalendar.tsx";
 
 const CalendarPage = () => {
     return (
