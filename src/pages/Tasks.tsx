@@ -75,6 +75,109 @@ const Tasks = () => {
                             <SelectItem value="done">Done</SelectItem>
                         </SelectContent>
                     </Select>
+
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                        <DialogTrigger asChild>
+                            <Button>
+                                <PlusIcon className="h-4 w-4 mr-1"/>
+                                Add Task
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[550px]">
+                            <DialogHeader>
+                                <DialogTitle>Create New Task</DialogTitle>
+                                <DialogDescription>
+                                    Add details for the new task below.
+                                </DialogDescription>
+                            </DialogHeader>
+                            <form onSubmit={handleAddTask}>
+                                <div className="grid gap-4 py-4">
+                                    <div className="space-y-2">
+                                        <label htmlFor="title" className="text-sm font-medium leading-none">
+                                            Title
+                                        </label>
+                                        <Input id="title" placeholder="Task title"/>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label htmlFor="description" className="text-sm font-medium leading-none">
+                                            Description
+                                        </label>
+                                        <textarea
+                                            id="description"
+                                            className="w-full min-h-[100px] rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                            placeholder="Task description"
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="space-y-2">
+                                            <label htmlFor="project" className="text-sm font-medium leading-none">
+                                                Project
+                                            </label>
+                                            <Select>
+                                                <SelectTrigger id="project">
+                                                    <SelectValue placeholder="Select project"/>
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    <SelectItem value="website">Website Redesign</SelectItem>
+                                                    <SelectItem value="mobile">Mobile App</SelectItem>
+                                                    <SelectItem value="api">Backend API</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label htmlFor="priority" className="text-sm font-medium leading-none">
+                                                Priority
+                                            </label>
+                                            <Select>
+                                                <SelectTrigger id="priority">
+                                                    <SelectValue placeholder="Select priority"/>
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    <SelectItem value="low">Low</SelectItem>
+                                                    <SelectItem value="medium">Medium</SelectItem>
+                                                    <SelectItem value="high">High</SelectItem>
+                                                    <SelectItem value="urgent">Urgent</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="space-y-2">
+                                            <label htmlFor="due-date" className="text-sm font-medium leading-none">
+                                                Due Date
+                                            </label>
+                                            <Input id="due-date" type="date"/>
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label htmlFor="assignee" className="text-sm font-medium leading-none">
+                                                Assignee
+                                            </label>
+                                            <Select>
+                                                <SelectTrigger id="assignee">
+                                                    <SelectValue placeholder="Assign to"/>
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    <SelectItem value="john">John Doe</SelectItem>
+                                                    <SelectItem value="mike">Mike Johnson</SelectItem>
+                                                    <SelectItem value="sarah">Sarah Lee</SelectItem>
+                                                    <SelectItem value="alice">Alice Smith</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label htmlFor="tags" className="text-sm font-medium leading-none">
+                                            Tags
+                                        </label>
+                                        <Input id="tags" placeholder="Enter tags separated by commas"/>
+                                    </div>
+                                </div>
+                                <DialogFooter>
+                                    <Button type="submit">Create Task</Button>
+                                </DialogFooter>
+                            </form>
+                        </DialogContent>
+                    </Dialog>
                 </div>
             </div>
 
