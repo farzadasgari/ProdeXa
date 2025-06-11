@@ -44,6 +44,14 @@ const App = () => {
                                 </MainLayout>
                             }
                         />
+                        <Route
+                            path="/projects"
+                            element={
+                                <MainLayout>
+                                    {/*<Projects/>*/}
+                                </MainLayout>
+                            }
+                        />
                     </Routes>
                 </BrowserRouter>
             </TooltipProvider>

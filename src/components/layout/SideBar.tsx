@@ -7,6 +7,7 @@ import {
     Calendar,
     ChevronLeft,
     ChevronRight,
+    FolderOpen,
     User,
     Settings
 } from "lucide-react";
@@ -75,6 +76,7 @@ const Sidebar = ({onCollapseChange}: SidebarProps) => {
                     <NavItem icon={LayoutDashboard} label="Dashboard" to="/" collapsed={collapsed}/>
                     <NavItem icon={CheckSquare} label="Tasks" to="/tasks" collapsed={collapsed}/>
                     <NavItem icon={Calendar} label="Calendar" to="/calendar" collapsed={collapsed}/>
+                    <NavItem icon={FolderOpen} label="Projects" to="/projects" collapsed={collapsed}/>
                 </nav>
 
 
