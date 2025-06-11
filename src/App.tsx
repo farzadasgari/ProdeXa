@@ -35,6 +35,14 @@ const App = () => {
                                 </MainLayout>
                             }
                         />
+                        <Route
+                            path="/calendar"
+                            element={
+                                <MainLayout>
+                                    {/*<Calendar/>*/}
+                                </MainLayout>
+                            }
+                        />
                     </Routes>
                 </BrowserRouter>
             </TooltipProvider>
