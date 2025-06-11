@@ -6,7 +6,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import Index from "./pages/Index";
 import Profile from "./pages/Profile";
-// import Task from "./pages/Task";
+import Tasks from "./pages/Tasks";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +31,7 @@ const App = () => {
                             path="/tasks"
                             element={
                                 <MainLayout>
-                                    {/*<Task/>*/}
+                                    <Tasks/>
                                 </MainLayout>
                             }
                         />

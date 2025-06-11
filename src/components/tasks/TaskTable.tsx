@@ -6,20 +6,20 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table";
-import {Badge} from "@/components/ui/badge";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
-import {Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar";
+} from "@/components/ui/table.tsx";
+import {Badge} from "@/components/ui/badge.tsx";
+import {Button} from "@/components/ui/button.tsx";
+import {Input} from "@/components/ui/input.tsx";
+import {Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar.tsx";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu.tsx";
 import {Edit, Trash2, MoreHorizontal} from "lucide-react";
-import {Checkbox} from "@/components/ui/checkbox";
-import {useToast} from "@/hooks/use-toast";
+import {Checkbox} from "@/components/ui/checkbox.tsx";
+import {useToast} from "@/hooks/use-toast.ts";
 import {
     Dialog,
     DialogContent,
@@ -27,7 +27,7 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog";
+} from "@/components/ui/dialog.tsx";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -37,14 +37,14 @@ import {
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+} from "@/components/ui/alert-dialog.tsx";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/select";
+} from "@/components/ui/select.tsx";
 
 interface Task {
     id: string;
