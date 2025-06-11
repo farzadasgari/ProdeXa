@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Profile from "./pages/Profile";
 import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -48,7 +49,7 @@ const App = () => {
                             path="/projects"
                             element={
                                 <MainLayout>
-                                    {/*<Projects/>*/}
+                                    <Projects/>
                                 </MainLayout>
                             }
                         />
