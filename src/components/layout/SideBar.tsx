@@ -59,7 +59,7 @@ const Sidebar = ({onCollapseChange}: SidebarProps) => {
             <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between p-4 border-b border-sidebar-border h-16">
                     {!collapsed && (
-                        <span className="text-xl font-bold">ProdeXa</span>
+                        <span className="text-xl font-bold">Prode</span>
                     )}
                     <button
                         onClick={toggleSidebar}
