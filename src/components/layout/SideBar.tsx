@@ -3,6 +3,7 @@ import {Link, useLocation} from "react-router-dom";
 import {cn} from "@/lib/utils";
 import {
     LayoutDashboard,
+    CheckSquare,
     ChevronLeft,
     ChevronRight,
     User,
@@ -71,6 +72,7 @@ const Sidebar = ({onCollapseChange}: SidebarProps) => {
 
                 <nav className="flex-1 px-2 py-4 space-y-1">
                     <NavItem icon={LayoutDashboard} label="Dashboard" to="/" collapsed={collapsed}/>
+                    <NavItem icon={CheckSquare} label="Tasks" to="/tasks" collapsed={collapsed}/>
                 </nav>
 
 
