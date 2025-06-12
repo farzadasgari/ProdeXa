@@ -11,6 +11,7 @@ import {
     User,
     Settings,
     Kanban,
+    PieChart
 } from "lucide-react";
 
 interface NavItemProps {
@@ -79,6 +80,7 @@ const Sidebar = ({onCollapseChange}: SidebarProps) => {
                     <NavItem icon={CheckSquare} label="Tasks" to="/tasks" collapsed={collapsed}/>
                     <NavItem icon={Calendar} label="Calendar" to="/calendar" collapsed={collapsed}/>
                     <NavItem icon={FolderOpen} label="Projects" to="/projects" collapsed={collapsed}/>
+                    <NavItem icon={PieChart} label="Analytics" to="/analytics" collapsed={collapsed}/>
                 </nav>
 
 

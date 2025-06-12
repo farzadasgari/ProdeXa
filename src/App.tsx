@@ -11,6 +11,7 @@ import Calendar from "@/pages/Calendar";
 import Projects from "@/pages/Projects";
 import Kanban from "@/pages/Kanban";
 import NotFound from "@/pages/NotFound";
+import Analytics from "@/pages/Analytics";
 
 
 const queryClient = new QueryClient();
@@ -61,6 +62,14 @@ const App = () => {
                             element={
                                 <MainLayout>
                                     <Kanban/>
+                                </MainLayout>
+                            }
+                        />
+                        <Route
+                            path="/analytics"
+                            element={
+                                <MainLayout>
+                                    <Analytics/>
                                 </MainLayout>
                             }
                         />
