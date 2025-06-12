@@ -4,6 +4,8 @@ import PageLayout from "@/components/layout/PageLayout";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import AccountSettings from "@/components/settings/AccountSettings";
 import ProfileSettings from "@/components/settings/ProfileSettings";
+import APISettings from "@/components/settings/APISettings.tsx";
+
 const validTabs = ['profile', 'account', 'notifications', 'api'] as const;
 type TabValue = typeof validTabs[number];
 
@@ -75,7 +77,7 @@ const Settings = () => {
                 </TabsContent>
 
                 <TabsContent value="api">
-                    {/*<ApiSettings />*/}
+                    <APISettings />
                 </TabsContent>
             </Tabs>
         </PageLayout>

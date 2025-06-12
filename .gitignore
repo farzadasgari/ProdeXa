@@ -2,10 +2,6 @@ node_modules/
 dist/
 dist-ssr/
 *.local
-.env
-.env.local
-.env.development
-.env.production
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
@@ -13,9 +9,4 @@ pnpm-debug.log*
 *.iml
 *.log
 logs/
-__pycache__/
-*.pyc
-db.sqlite3
-*.env
-venv/
 favcs.sh
