@@ -1,3 +1,16 @@
+import {useState} from "react";
+import {useToast} from "@/hooks/use-toast";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import {Badge} from "@/components/ui/badge";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+
 interface KanbanTask {
     id: string;
     title: string;
@@ -118,3 +131,117 @@ const initialTasks: KanbanTask[] = [
         dueDate: "2025-06-02",
     },
 ];
+
+export function KanbanBoard() {
+    const {toast} = useToast();
+    const [tasks, setTasks] = useState(initialTasks);
+
+    // Function to simulate drag-and-drop behavior
+    const handleDragStart = (e: React.DragEvent, id: string) => {
+        e.dataTransfer.setData("taskId", id);
+    };
+
+    const handleDrop = (e: React.DragEvent, newStatus: KanbanTask["status"]) => {
+        e.preventDefault();
+        const taskId = e.dataTransfer.getData("taskId");
+
+        setTasks((prev) =>
+            prev.map((task) =>
+                task.id === taskId ? {...task, status: newStatus} : task
+            )
+        );
+
+        toast({
+            description: `Task moved to ${newStatus.replace("-", " ")}`,
+        });
+    };
+
+    const handleDragOver = (e: React.DragEvent) => {
+        e.preventDefault();
+    };
+
+    const columns: { id: KanbanTask["status"]; title: string }[] = [
+        {id: "to-do", title: "To Do"},
+        {id: "in-progress", title: "In Progress"},
+        {id: "review", title: "Review"},
+        {id: "done", title: "Done"},
+    ];
+
+    return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {columns.map((column) => (
+                <div key={column.id} className="flex flex-col h-full">
+                    <div className="flex items-center justify-between mb-3">
+                        <h3 className="font-medium">{column.title}</h3>
+                        <Badge variant="outline">
+                            {tasks.filter((task) => task.status === column.id).length}
+                        </Badge>
+                    </div>
+                    <div
+                        className="bg-muted/40 rounded-lg p-3 flex-1 min-h-[500px]"
+                        onDrop={(e) => handleDrop(e, column.id)}
+                        onDragOver={handleDragOver}
+                    >
+                        <div className="space-y-3">
+                            {tasks
+                                .filter((task) => task.status === column.id)
+                                .map((task) => (
+                                    <Card
+                                        key={task.id}
+                                        className="bg-card cursor-move"
+                                        draggable
+                                        onDragStart={(e) => handleDragStart(e, task.id)}
+                                    >
+                                        <CardHeader className="p-3 pb-0">
+                                            <CardTitle className="text-sm font-medium">
+                                                {task.title}
+                                            </CardTitle>
+                                            <CardDescription className="text-xs mt-1">
+                                                {task.description}
+                                            </CardDescription>
+                                        </CardHeader>
+                                        <CardContent className="p-3 pt-2">
+                                            <div className="flex flex-wrap gap-1 mb-2">
+                                                {task.tags.map((tag) => (
+                                                    <Badge key={tag} variant="outline" className="text-xs">
+                                                        {tag}
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                            <div
+                                                className="flex justify-between items-center text-xs text-muted-foreground">
+                                                <div>
+                          <span className={`priority-badge priority-${task.priority}`}>
+                            {task.priority}
+                          </span>
+                                                </div>
+                                                {task.dueDate && (
+                                                    <div>Due: {new Date(task.dueDate).toLocaleDateString()}</div>
+                                                )}
+                                            </div>
+                                        </CardContent>
+                                        <CardFooter className="p-3 pt-0 flex justify-between items-center">
+                                            <div className="text-xs text-muted-foreground">
+                                                {task.id}
+                                            </div>
+                                            <Avatar className="h-6 w-6">
+                                                <AvatarImage
+                                                    src={task.assignee.avatar || ""}
+                                                    alt={task.assignee.name}
+                                                />
+                                                <AvatarFallback className="text-xs">
+                                                    {task.assignee.initials}
+                                                </AvatarFallback>
+                                            </Avatar>
+                                        </CardFooter>
+                                    </Card>
+                                ))}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+export default KanbanBoard;
