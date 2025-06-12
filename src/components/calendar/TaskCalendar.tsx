@@ -1,6 +1,6 @@
 import {useMemo, useState} from "react";
 import {format, startOfWeek, endOfWeek, eachDayOfInterval, startOfDay, endOfDay, addDays} from "date-fns";
-import {Calendar} from "@/components/ui/calendar.tsx";
+import {Calendar} from "@/components/ui/calendar";
 import {
     Card,
     CardContent,
@@ -8,12 +8,12 @@ import {
     CardHeader,
     CardTitle,
     CardFooter,
-} from "@/components/ui/card.tsx";
-import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs.tsx";
-import {Badge} from "@/components/ui/badge.tsx";
-import {Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar.tsx";
-import {Button} from "@/components/ui/button.tsx";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
+} from "@/components/ui/card";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
+import {Badge} from "@/components/ui/badge";
+import {Avatar, AvatarImage, AvatarFallback} from "@/components/ui/avatar";
+import {Button} from "@/components/ui/button";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import {CheckCircle, Clock, Plus} from "lucide-react";
 
 interface CalendarTask {
@@ -30,6 +30,10 @@ interface CalendarTask {
         avatar?: string;
         initials: string;
     };
+}
+
+interface TaskCalendarProps {
+    onDateSelect?: (date?: Date) => void;
 }
 
 // Extended sample tasks data
@@ -141,7 +145,7 @@ const tasksData: CalendarTask[] = [
     },
 ];
 
-export function TaskCalendar() {
+export function TaskCalendar({onDateSelect}: TaskCalendarProps) {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const [view, setView] = useState<"month" | "week" | "day">("month");
     const [projectFilter, setProjectFilter] = useState<string>("all");
@@ -326,7 +330,8 @@ export function TaskCalendar() {
                                 ) : (
                                     <div className="py-8 text-center">
                                         <p className="text-muted-foreground">No tasks for this date</p>
-                                        <Button variant="outline" size="sm" className="mt-4">
+                                        <Button variant="outline" size="sm" className="mt-4"
+                                                onClick={() => onDateSelect?.(date)}>
                                             <Plus className="h-4 w-4 mr-1"/>
                                             Add Task
                                         </Button>
@@ -554,7 +559,7 @@ export function TaskCalendar() {
                 </CardContent>
                 <CardFooter className="border-t bg-muted/50">
                     <div className="w-full flex justify-center">
-                        <Button variant="outline" size="sm">
+                        <Button variant="outline" size="sm" onClick={() => onDateSelect?.()}>
                             <Plus className="h-4 w-4 mr-1"/>
                             Add Task
                         </Button>
