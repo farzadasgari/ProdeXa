@@ -9,6 +9,7 @@ import Profile from "./pages/Profile";
 import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
 import Projects from "./pages/Projects";
+import Kanban from "./pages/Kanban";
 
 
 const queryClient = new QueryClient();
@@ -51,6 +52,14 @@ const App = () => {
                             element={
                                 <MainLayout>
                                     <Projects/>
+                                </MainLayout>
+                            }
+                        />
+                        <Route
+                            path="/kanban"
+                            element={
+                                <MainLayout>
+                                    <Kanban/>
                                 </MainLayout>
                             }
                         />

@@ -9,7 +9,8 @@ import {
     ChevronRight,
     FolderOpen,
     User,
-    Settings
+    Settings,
+    Kanban,
 } from "lucide-react";
 
 interface NavItemProps {
@@ -74,6 +75,7 @@ const Sidebar = ({onCollapseChange}: SidebarProps) => {
 
                 <nav className="flex-1 px-2 py-4 space-y-1">
                     <NavItem icon={LayoutDashboard} label="Dashboard" to="/" collapsed={collapsed}/>
+                    <NavItem icon={Kanban} label="Kanban" to="/kanban" collapsed={collapsed}/>
                     <NavItem icon={CheckSquare} label="Tasks" to="/tasks" collapsed={collapsed}/>
                     <NavItem icon={Calendar} label="Calendar" to="/calendar" collapsed={collapsed}/>
                     <NavItem icon={FolderOpen} label="Projects" to="/projects" collapsed={collapsed}/>
