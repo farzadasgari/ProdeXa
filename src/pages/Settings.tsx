@@ -3,6 +3,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import PageLayout from "@/components/layout/PageLayout";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import AccountSettings from "@/components/settings/AccountSettings";
+import ProfileSettings from "@/components/settings/ProfileSettings";
 const validTabs = ['profile', 'account', 'notifications', 'api'] as const;
 type TabValue = typeof validTabs[number];
 
@@ -62,7 +63,7 @@ const Settings = () => {
                 </TabsList>
 
                 <TabsContent value="profile">
-                    {/*<ProfileSettings />*/}
+                    <ProfileSettings />
                 </TabsContent>
 
                 <TabsContent value="account">
