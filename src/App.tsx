@@ -12,6 +12,7 @@ import Projects from "@/pages/Projects";
 import Kanban from "@/pages/Kanban";
 import NotFound from "@/pages/NotFound";
 import Analytics from "@/pages/Analytics";
+import Settings from "@/pages/Settings";
 
 
 const queryClient = new QueryClient();
@@ -70,6 +71,14 @@ const App = () => {
                             element={
                                 <MainLayout>
                                     <Analytics/>
+                                </MainLayout>
+                            }
+                        />
+                        <Route
+                            path="/settings"
+                            element={
+                                <MainLayout>
+                                    <Settings/>
                                 </MainLayout>
                             }
                         />
