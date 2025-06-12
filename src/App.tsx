@@ -10,6 +10,7 @@ import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
 import Projects from "./pages/Projects";
 
+
 const queryClient = new QueryClient();
 
 const App = () => {
